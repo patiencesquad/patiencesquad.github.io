@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>?</title>
+<link rel="stylesheet" href="assets/css/hereweare.css">
+
+</head>
+<body>
+
+  <div>
+    <input type="text" id="userInput" autofocus>
+    <button id="enterBtn">Enter</button>
+  </div>
+
+  <script>
+    const input = document.getElementById('userInput');
+    const button = document.getElementById('enterBtn');
+
+    function checkInput() {
+      if (input.value.trim().toLowerCase() === 'you') {
+        window.location.href = 'you.html';
+      }
+    }
+
+    button.addEventListener('click', checkInput);
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        checkInput();
+      }
+    });
+  </script>
+
+</body>
+</html>

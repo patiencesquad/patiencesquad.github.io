@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>UNDERTALE CYAN</title>
+<link rel="stylesheet" href="assets/css/main.css">
+
+</head>
+<body>
+
+  <audio id="bgm" src="sounds/faintglow.mp3" loop></audio>
+  <audio id="weird" src="sounds/weird.wav"></audio>
+
+  <div class="fade" id="fade"></div>
+
+  <div class="start-screen" id="startScreen">
+    <div class="start-text">Just Press</div>
+    <div class="start-btn" id="startBtn">
+      <img src="assets/accept.png" alt="Accept" />
+    </div>
+  </div>
+
+  <div class="content" id="mainContent">
+    <div class="title">
+      <img src="assets/title.png" alt="Title" id="titleImg"/>
+    </div>
+
+    <div class="text">
+Hey! New devlog in live on!
+Press for more! <a id="justPressLink">Just press</a>.
+
+--- Site Changelog ---
+Site life on!
+Add new logo!
+Add some links!
+Remove herobrine.
+    </div>
+
+    <footer>
+      <a href="https://youtube.com/@patiencesquad?si=76xpkyATYEUaJwHm" target="_blank">YouTube</a>
+      <a href="https://www.tiktok.com/@undertalecyan?_r=1&_t=ZS-93OHkMCsPcP" target="_blank">TikTok</a>
+      <a href="https://t.me/undertalecyann" target="_blank">Telegram</a>
+    </footer>
+  </div>
+
+  <script>
+    const btn = document.getElementById('startBtn');
+    const startScreen = document.getElementById('startScreen');
+    const content = document.getElementById('mainContent');
+    const audio = document.getElementById('bgm');
+    const weird = document.getElementById('weird');
+    const fade = document.getElementById('fade');
+    const justPressLink = document.getElementById('justPressLink');
+
+    let isAnimating = false;
+
+    window.addEventListener('load', () => {
+      setTimeout(() => fade.classList.add('hidden'), 50);
+    });
+
+    btn.addEventListener('click', () => {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      weird.currentTime = 0;
+      weird.play().catch(() => {});
+      fade.classList.remove('hidden');
+
+      weird.onended = () => {
+        audio.play().catch(() => {});
+        setTimeout(() => {
+          startScreen.style.display = 'none';
+          content.classList.add('visible');
+          fade.classList.add('hidden');
+          isAnimating = false;
+        }, 400);
+      };
+    });
+
+    justPressLink.addEventListener('click', () => {
+      window.open('https://t.me/undertalecyann', '_blank');
+    });
+
+    const titleImg = document.getElementById('titleImg');
+    let clickCount = 0;
+    let clickTimeout;
+
+    titleImg.addEventListener('click', () => {
+      clickCount++;
+
+      clearTimeout(clickTimeout);
+      clickTimeout = setTimeout(() => {
+        clickCount = 0;
+      }, 1500);
+
+      if (clickCount >= 3) {
+        window.location.href = 'hereweare.html';
+      }
+    });
+  </script>
+
+</body>
+</html>
