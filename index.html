@@ -75,9 +75,11 @@
       };
     });
 
-    justPressLink.addEventListener('click', () => {
-      window.open('https://t.me/PS_Cyan', '_blank');
-    });
+    if (justPressLink) {
+      justPressLink.addEventListener('click', () => {
+        window.open('https://t.me/PS_Cyan', '_blank');
+      });
+    }
 
     const titleImg = document.getElementById('titleImg');
     let clickCount = 0;
@@ -92,16 +94,11 @@
       }, 1500);
 
       if (clickCount >= 3) {
-        window.location.href = 'hereweare.html';
+        window.location.href = './hereweare.html';
+        clickCount = 0;
       }
     });
   </script>
 
 </body>
-
 </html>
-
-
-
-
-
